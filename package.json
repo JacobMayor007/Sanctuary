@@ -1,0 +1,21 @@
+{
+  "name": "vue_and_go",
+  "version": "1.0.0",
+  "description": "Another web application for vue and go, just trying to expirement, and explore",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "web": "npm run dev --prefix ./client"
+  },
+  "keywords": [
+    "Vue",
+    "Go",
+    "Web",
+    "Application"
+  ],
+  "author": "Jacob Mary Tapere",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier-plugin-tailwindcss": "^0.7.2"
+  }
+}
