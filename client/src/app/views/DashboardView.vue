@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import Title from '@/components/atoms/title.vue';
+</script>
+
 <template>
-  <main></main>
+  <main>
+    <Title />
+  </main>
 </template>

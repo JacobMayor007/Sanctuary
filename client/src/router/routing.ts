@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { queryClient } from '@/query';
 import LoginView from '@/app/views/LoginView.vue';
+import RegisterView from '@/app/views/RegisterView.vue';
 
 const routing = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,6 +16,11 @@ const routing = createRouter({
       path: '/login',
       name: 'login',
       component: LoginView,
+    },
+    {
+      path: '/sign-up',
+      name: 'sign-up',
+      component: RegisterView,
     },
   ],
 });
