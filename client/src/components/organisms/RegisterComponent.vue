@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Button from '../atoms/Button.vue';
 import InputGroup from '../molecules/InputGroup.vue';
 </script>
 
