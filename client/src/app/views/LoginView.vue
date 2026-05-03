@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import Heading from '@/components/atoms/Heading.vue';
-import Title from '@/components/atoms/title.vue';
+import Paragraph from '@/components/atoms/Paragraph.vue';
+import TitleHeader from '@/components/atoms/TitleHeader.vue';
 import LoginComponent from '@/components/organisms/LoginComponent.vue';
 </script>
 
 <template>
   <main class="relative flex h-screen flex-col overflow-hidden p-8">
     <!-- The title -->
-    <Title class="px-4" />
+    <TitleHeader class="px-4" />
 
     <!-- This is the S Overlay -->
     <h1
@@ -16,24 +17,25 @@ import LoginComponent from '@/components/organisms/LoginComponent.vue';
       S
     </h1>
     <div
-      class="relative z-10 flex flex-1 flex-col gap-20 px-4 pt-16 md:justify-center md:px-32 md:pt-0 lg:px-[250px] xl:px-[400px] 2xl:px-[500px]"
+      class="relative z-10 flex flex-1 flex-col justify-around px-4 pt-16 md:justify-center md:gap-20 md:px-32 md:pt-0 lg:px-[250px] xl:px-[400px] 2xl:px-[500px]"
     >
       <div class="flex flex-col gap-10">
         <Heading title="Welcome Home" headingClass=" text-center text-5xl tracking-wide" />
-        <p
+        <Paragraph
           title="Enter your sanctuary to continue"
           paraClass="text-center text-[14px] tracking-widest text-[#1C1C18]/50 uppercase"
         />
       </div>
       <LoginComponent />
-      <h2 class="font-manrope text-center text-sm tracking-widest text-[#1C1C18]/50 uppercase">
-        NEW TO THE Sanctuary?
-        <span
+      <h2 class="font-manrope text-center text-sm tracking-widest text-[#1C1C18]/50 uppercase"></h2>
+      <div class="flex flex-row justify-between">
+        <Heading title="NEW TO THE Sanctuary?" headingClass="text-lg uppercase text-[#1C1C18]/50" />
+        <Paragraph
           @click="$router.push('/sign-up')"
-          class="font-manrope cursor-pointer font-bold text-[#1C1C18] uppercase"
-          >Create an account</span
-        >
-      </h2>
+          title="Sign Up"
+          paraClass="font-bold cursor-pointer uppercase"
+        />
+      </div>
     </div>
   </main>
 </template>

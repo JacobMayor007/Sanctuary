@@ -2,10 +2,16 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { queryClient } from '@/query';
 import LoginView from '@/app/views/LoginView.vue';
 import RegisterView from '@/app/views/RegisterView.vue';
+import ForgotPassword from '@/app/views/ForgotPassword.vue';
 
 const routing = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('@/app/views/NotFoundView.vue'),
+    },
     {
       path: '/',
       name: 'dashboard',
@@ -22,6 +28,11 @@ const routing = createRouter({
       name: 'sign-up',
       component: RegisterView,
     },
+    {
+      path: '/forgot-password',
+      name: 'forgot-password',
+      component: ForgotPassword,
+    },
   ],
 });
 
@@ -29,6 +40,10 @@ routing.beforeEach(async (to) => {
   const user = queryClient.getQueryData(['auth']); // 🔁 swap with your actual query key
 
   const isAuthenticated = !!user;
+
+  if (to.name === 'register') {
+    return { name: 'sign-up' };
+  }
 
   if (isAuthenticated && to.name === 'login') {
     return { name: 'dashboard' };

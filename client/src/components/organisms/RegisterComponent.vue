@@ -28,8 +28,9 @@ import InputGroup from '../molecules/InputGroup.vue';
       inputClass="tracking-[0.2em]"
     />
     <Button
+      type="submit"
       title="Begin My Ritual"
-      buttonClass="py-7 rounded-xl bg-[#5F7D74] text-white text-[16px]"
+      buttonClass="py-5 rounded-xl bg-[#5F7D74] text-white text-[16px]"
     />
   </form>
 </template>

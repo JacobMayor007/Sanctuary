@@ -49,6 +49,7 @@ const emit = defineEmits<{
         :id="id"
         :placeholder="placeholder"
         :class="inputClasses"
+        required
         @change="emit('change', ($event.target as HTMLInputElement).value)"
       />
 
