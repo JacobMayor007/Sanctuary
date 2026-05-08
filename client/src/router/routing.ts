@@ -19,8 +19,8 @@ const routing = createRouter({
       meta: { requiresAuth: true },
     },
     {
-      path: '/login',
-      name: 'login',
+      path: '/sign-in',
+      name: 'sign-in',
       component: LoginView,
     },
     {
@@ -45,12 +45,12 @@ routing.beforeEach(async (to) => {
     return { name: 'sign-up' };
   }
 
-  if (isAuthenticated && to.name === 'login') {
+  if (isAuthenticated && to.name === 'sign-in') {
     return { name: 'dashboard' };
   }
 
   if (!isAuthenticated && to.meta.requiresAuth) {
-    return { name: 'login' };
+    return { name: 'sign-in' };
   }
 });
 

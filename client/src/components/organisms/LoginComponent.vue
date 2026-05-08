@@ -23,6 +23,7 @@ const seePassword = ref(false);
       </template>
     </InputGroup>
     <Heading
+      @click="$router.push('/forgot-password')"
       title="Forgot Password?"
       class="font-manrope cursor-pointer text-right text-[11px] font-bold tracking-widest text-[#47645C] uppercase"
     />
