@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import Button from '@/components/atoms/Button.vue';
 import Heading from '@/components/atoms/Heading.vue';
 import Paragraph from '@/components/atoms/Paragraph.vue';
 import TitleHeader from '@/components/atoms/TitleHeader.vue';
-import InputGroup from '@/components/molecules/InputGroup.vue';
 import IconArrow from '../../../public/icons/IconArrow.vue';
+import ForgotPasswordComponent from '@/components/organisms/ForgotPasswordComponent.vue';
 </script>
 
 <template>
@@ -17,10 +16,7 @@ import IconArrow from '../../../public/icons/IconArrow.vue';
           reset your password."
         class="font-manrope text-center tracking-wide"
       />
-      <form action="" class="flex flex-col gap-10">
-        <InputGroup type="email" label="Email Address" placeholder="name@example.com" />
-        <Button title="Send Reset Link" type="submit" button-class="bg-[#5F7D74] text-white" />
-      </form>
+      <ForgotPasswordComponent />
       <div
         @click="$router.push('/sign-in')"
         class="flex flex-row items-center justify-center gap-8"
