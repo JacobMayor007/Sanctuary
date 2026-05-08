@@ -22,7 +22,7 @@ const labelClasses = twMerge(
 
 const inputClasses = twMerge(
   clsx(
-    'font-manrope h-11 w-full border-b-[1px] border-[#C1C8C4] text-sm text-[#8e9792] outline-none placeholder:text-[#1C1C18]/20',
+    'font-manrope placeholder:font-manrope h-11 w-full border-b-[1px] border-[#C1C8C4] text-sm text-[#8e9792] outline-none placeholder:text-[#1C1C18]/20',
     slots['left-icon'] && 'pl-6.5',
     slots['right-icon'] && 'pr-6.5',
     props.inputClass,
