@@ -28,7 +28,7 @@ import RegisterComponent from '@/components/organisms/RegisterComponent.vue';
         <div class="flex flex-row justify-between">
           <Heading title="Already have an account?" headingClass="text-lg" />
           <Paragraph
-            @click="$router.push('/login')"
+            @click="$router.push('/sign-in')"
             title="Sign In "
             paraClass="font-bold cursor-pointer"
           />

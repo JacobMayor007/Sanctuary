@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "web": "npm run dev --prefix ./client"
+    "web": "npm run dev --prefix ./client",
+    "server": "cd server && air"
   },
   "keywords": [
     "Vue",
@@ -17,8 +18,5 @@
   "license": "MIT",
   "devDependencies": {
     "prettier-plugin-tailwindcss": "^0.7.2"
-  },
-  "dependencies": {
-    "firebase": "^12.12.1"
   }
 }

@@ -1,0 +1,14 @@
+# Environment
+.env
+
+# Firebase
+serviceAccountKey.json
+
+# Go
+*.exe
+*.out
+/vendor/
+
+# IDE
+.vscode/
+.idea/

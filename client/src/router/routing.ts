@@ -3,6 +3,7 @@ import { queryClient } from '@/query';
 import LoginView from '@/app/views/LoginView.vue';
 import RegisterView from '@/app/views/RegisterView.vue';
 import ForgotPassword from '@/app/views/ForgotPassword.vue';
+import { auth } from '@/lib/firebase';
 
 const routing = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -37,15 +38,27 @@ const routing = createRouter({
 });
 
 routing.beforeEach(async (to) => {
-  const user = queryClient.getQueryData(['auth']); // 🔁 swap with your actual query key
+  // Get cached auth user from TanStack Query
+  let user = queryClient.getQueryData(['auth']);
+
+  // If not cached, check Firebase directly
+  if (!user) {
+    user = await new Promise((resolve) => {
+      const unsubscribe = auth.onAuthStateChanged((firebaseUser) => {
+        unsubscribe();
+        resolve(firebaseUser);
+      });
+    });
+
+    // Cache it in TanStack Query
+    if (user) {
+      queryClient.setQueryData(['auth'], user);
+    }
+  }
 
   const isAuthenticated = !!user;
 
-  if (to.name === 'register') {
-    return { name: 'sign-up' };
-  }
-
-  if (isAuthenticated && to.name === 'sign-in') {
+  if (isAuthenticated && (to.name === 'sign-in' || to.name === 'sign-up')) {
     return { name: 'dashboard' };
   }
 
