@@ -8,7 +8,6 @@ import (
 // Interface
 type UserRepositoryInterface interface {
 	CreateUser(firebaseUID, email, name string) (*model.User, error)
-	GetUserByFirebaseUID(firebaseUID string) (*model.User, error)
 	GetUserByID(id uint) (*model.User, error)
 	UpdateUser(firebaseUID, name string) (*model.User, error)
 	DeleteUser(firebaseUID string) error
@@ -39,15 +38,6 @@ func (u *UserRepository) CreateUser(firebaseUID, email, name string) (*model.Use
 		return nil, result.Error
 	}
 
-	return &user, nil
-}
-
-func (u *UserRepository) GetUserByFirebaseUID(firebaseUID string) (*model.User, error) {
-	var user model.User
-	result := database.DB.Where("f_uid = ?", firebaseUID).First(&user)
-	if result.Error != nil {
-		return nil, result.Error
-	}
 	return &user, nil
 }
 

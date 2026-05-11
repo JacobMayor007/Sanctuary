@@ -3,9 +3,12 @@ package api
 import (
 	"encoding/json"
 	"net/http"
+	"strconv"
 
 	"sanctuary_server/middleware"
 	"sanctuary_server/repository"
+
+	"github.com/go-chi/chi/v5"
 )
 
 type UserApi struct {
@@ -53,13 +56,24 @@ func (u *UserApi) Register(w http.ResponseWriter, r *http.Request) {
 
 // GET /users/me
 func (u *UserApi) GetMe(w http.ResponseWriter, r *http.Request) {
-	token, err := middleware.VerifyToken(r)
+	_, err := middleware.VerifyToken(r)
 	if err != nil {
 		http.Error(w, "Unauthorized", http.StatusUnauthorized)
 		return
 	}
 
-	user, err := u.UserRepository.GetUserByFirebaseUID(token.UID)
+	// 1. Get the parameter as a string
+	idStr := chi.URLParam(r, "userId")
+
+	// 2. Convert string to int using strconv.Atoi
+	id, err := strconv.Atoi(idStr)
+
+	if err != nil {
+		http.Error(w, "Invalid User ID", http.StatusBadRequest)
+		return
+	}
+
+	user, err := u.UserRepository.GetUserByID(uint(id))
 	if err != nil {
 		http.Error(w, "User not found", http.StatusNotFound)
 		return
